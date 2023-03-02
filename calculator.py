@@ -5,10 +5,59 @@ from arithmetic import (add, subtract, multiply, divide, square, cube,
 
 
 # Replace this with your code
-while True:
+def validation():
     user_input = input("Enter input:")
     tokens = user_input.split()
-    print("---->",tokens)
+    
+    while True: 
+        if tokens[0] != '+' and tokens[0] != '-' and tokens[0] != '*' and tokens[0] != '/' and tokens[0] != 'square' and tokens[0] != 'cube' and tokens[0] != 'pow' and tokens[0] != 'mod' and tokens[0] != 'q':
+            print("Please enter proper command (+, -, *, /, square, cube, pow, mod )")
+            user_input = input("Re-Enter input:")
+            tokens = user_input.split()
+        else:
+            break
+
+    
+    if len(tokens)<3:
+        while True:
+                if tokens[0] != '+' and tokens[0] != '-' and tokens[0] != '*' and tokens[0] != '/' and tokens[0] != 'square' and tokens[0] != 'cube' and tokens[0] != 'pow' and tokens[0] != 'mod' and tokens[0] != 'q':
+                    print("Please enter proper command (+, -, *, /, square, cube, pow, mod )")
+                    user_input = input("Re-Enter input:")
+                    tokens = user_input.split()
+                if tokens[0] == 'q':
+                        return tokens
+                if not tokens[1].isdigit():
+                    print("Please use a number")
+                    user_input = input("Re-enter input:")
+                    tokens = user_input.split()
+                    
+                else:
+                    break
+
+    if len(tokens)>2:
+        while True:
+            if tokens[0] != '+' and tokens[0] != '-' and tokens[0] != '*' and tokens[0] != '/' and tokens[0] != 'square' and tokens[0] != 'cube' and tokens[0] != 'pow' and tokens[0] != 'mod' and tokens[0] != 'q':
+                    print("Please enter proper command (+, -, *, /, square, cube, pow, mod )")
+                    user_input = input("Re-Enter input:")
+                    tokens = user_input.split()
+            if tokens[0] == 'q':
+                        return tokens      
+            if not tokens[1].isdigit() or not tokens[2].isdigit():
+                print("Please use a number")
+                user_input = input("Re-enter input:")
+                tokens = user_input.split()
+            else:
+                break
+    
+    return tokens
+
+
+while True:
+
+    tokens= validation()
+    # user_input = input("Enter input:")
+    # tokens = user_input.split()
+    
     if 'q' in tokens:
         print("exit")
         break
@@ -44,3 +93,5 @@ while True:
     elif operator == "mod":
         result = mod(num1, num2)
         print(result)
+
+
